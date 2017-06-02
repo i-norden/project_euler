@@ -26,7 +26,7 @@ var sum = 0;
 var sumFunction = function() {
   for (i = 0; i < array.length; i++) {
   sum += array[i];
-}
+  }
 }
 
 sumFunction();
