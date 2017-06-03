@@ -6,7 +6,7 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 
 =end
 
-def palindrome(number1, number2)
+def palindrome(number1, number2) #finds largest palindrome made by multiplying numbers below or equal to number1 and number2
 i = 1
 array1 = []
 number1.times do
