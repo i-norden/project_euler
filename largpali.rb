@@ -44,4 +44,4 @@ largest = palindromes.max
 puts largest
 end
 
-# answer = 906609
+# answer = 906609; 99000099 for product of two 4 digit numbers (9999, 9999)
