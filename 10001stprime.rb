@@ -8,7 +8,9 @@ What is the 10 001st prime number?
 
 
 def is_prime?(n)
-  return nil if n == 0
+  return nil if n == 0 || n == 1
+  return true if n == 5
+  return false if n % 5 == 0
   array = []
   i = 2
   (n-2).times do
@@ -23,13 +25,13 @@ end
 
 
 def find_prime(n)
-  primes = []
-  i = 2
+  primes = [2]
+  i = 1
   until primes.length == n do
     primes << i if is_prime?(i)
-    i += 1
+    i += 2
   end
   primes[-1]
 end
 
-# answer =
+# answer = 104743

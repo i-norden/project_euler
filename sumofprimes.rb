@@ -10,6 +10,7 @@ Find the sum of all the primes below two million.
 
 def is_prime?(n)
   return nil if n == 0 || n == 1
+  #return true if n == 2
   #return false if n % 2 == 0
   return true if n == 5
   return false if n % 5 == 0
