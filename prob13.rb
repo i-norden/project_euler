@@ -105,12 +105,12 @@ Work out the first ten digits of the sum of the following one-hundred 50-digit n
 =end
 
 
-def sum(input)
+def sum(input, n)
   array = []
   input.split(" ").each { |x| array << x.to_i }
   sum = array.inject(0, :+).to_s.split("")
   print sum.join("").to_i
-  return sum[0..9].join("").to_i
+  return sum[0..n].join("").to_i
 end
 
 #answer = 5537376230
