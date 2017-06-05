@@ -83,4 +83,4 @@ end
 
 
 #answer = 41076896
-#need to find a way to generalize it to an array/grid of any size
+#need to find a way to generalize it to an array/grid of any size- i though using array.length - y would work but it doesnt seem to be the case
