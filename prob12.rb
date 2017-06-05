@@ -32,8 +32,8 @@ until match == true do
   j = 1
   tri_num.times do
     divisors << j if tri_num % j == 0
+    #print divisors if tri_num % j == 0
     j += 1
-    print divisors
   end
   match = true if divisors.length > n
   puts tri_num if divisors.length > n
@@ -55,4 +55,4 @@ def triangle_number(x)
   return total
 end
 
-#answer =
+#answer = method takes too long for computer to solve for 500 divisors in a day
