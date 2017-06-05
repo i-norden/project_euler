@@ -37,4 +37,4 @@ def sum_of_all_primes(n)
   sum = primes.inject(0, :+)
 end
 
-#this took forever to find with this method: answer =
+#this takes too long for my computer to find answer in reasonable amount of time (under a day)
