@@ -11,18 +11,21 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 
 
 
-def fib(n) #takes number of terms as argument
+def fib(n) #takes number of terms as argument (just make sure this is larger than limit)
   array = [0, 1]
   fib_sequence = [0, 1]
   i = 2
   (n-2).times do
     array[i] = array[i-1] + array[i-2]
-    if array[i] <= 1000000000000000000000   #change this limit to whatever you want
+    if array[i] <= 4000000   #change this limit to whatever you want
       fib_sequence << array[i]
       i += 1
     end
   end
+  puts i
   evens = []
   fib_sequence.each { |x| evens << x if x % 2 == 0 } #to sum evens only
   total = evens.inject(0, :+)
 end
+
+#answer = 4613732
