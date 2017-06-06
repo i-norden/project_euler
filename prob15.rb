@@ -71,4 +71,4 @@ def coordinates(x) # finds the cordinates value x in nested array, output format
 end
 
 #answer, 5x5 (1mil it): 252 , 20x20 (1mil it): 999701 , 20x20 (10mil it): 9974465
-#this approach is too slow to work. actual answer is: 137846528820
+#this approach is too slow to work. actual answer is: 137846528820  https://blog.dreamshire.com/project-euler-15-solution/
