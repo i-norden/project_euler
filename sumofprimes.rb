@@ -38,3 +38,12 @@ def sum_of_all_primes(n)
 end
 
 #this takes too long for my computer to find answer in reasonable amount of time (under a day)
+=begin
+
+benchmarking method to compare efficiency:
+
+require 'benchmark'
+
+puts Benchmark.measure { sum_of_all_primes(100000)}
+
+=end
