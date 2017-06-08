@@ -9,6 +9,37 @@ How many such routes are there through a 20×20 grid?
 
 =end
 
+
+#math method:
+=begin
+
+trying to find the number of unique ways to order 20 ups and 20 downs [UUUUUUUUUUDDDDDDDDDD]
+
+recall (2n, n) = (2n)!/n! x n! or generally (n+m, n) = (n+m)!/n! x m!
+
+=end
+
+def lattice_paths(n)
+  paths = (factorial(2*n))/(factorial(n) * factorial(n))
+end
+
+def factorial(x)
+  return x if x == 0
+  i = 1
+  total = 1
+  while i <= x
+    total = total * i
+    i += 1
+  end
+  return total
+end
+
+#answer = 137846528820
+
+
+
+#fun brute force method:
+
 =begin
 notice:
 2x2 gird => 3x3nodes; nxn grid => (n+1)x(n+1) nodes
@@ -22,7 +53,6 @@ possible moves:
 [x][y] => [x][y+1]
 
 =end
-
 
 def lattice_paths(n, it) # n = size of grid (e.g. n = 20 => 20x20, with m = 21 => 21x21 nodes), it = number of iterations to perform to approximate # of possible lattice paths
 columns = []
@@ -71,4 +101,4 @@ def coordinates(x) # finds the cordinates value x in nested array, output format
 end
 
 #answer, 5x5 (1mil it): 252 , 20x20 (1mil it): 999701 , 20x20 (10mil it): 9974465
-#this approach is too slow to work. actual answer is: 137846528820  https://blog.dreamshire.com/project-euler-15-solution/
+#this approach is too slow to work. actual answer is: 137846528820
