@@ -45,7 +45,7 @@ max value achieveable n rows from bottom is n*99
 
 #brute force method (for funsies):
 
-def brute_force(input, n) #args = input in string format, n = number of rows, it = number of iterations to perform
+def brute_force(input, n, it) #args = input in string format, n = number of rows, it = number of iterations to perform
   arr = input.split(" ").map { |x| x.to_i }
   i = 0
   j = 0
@@ -59,13 +59,34 @@ def brute_force(input, n) #args = input in string format, n = number of rows, it
      k += j
      rows << arr[j..k]
    end
+   paths = Array.new
+   it.times do
+     row = 0
+     member = 0
+     path = Array.new << rows[0]
+     (n-1).times do
+       row += 1
+       if rand() >= 0.5
+         member = member
+       else
+         member += 1
+       end
+       path << rows[row][member]
+     end
+     print path
+     paths << path.inject(0, :+)
+   end
   print rows
   puts ""
-  return rows[14][1]
+  print paths
+  puts ""
+  return paths.max
 end
 
 
+#answer = 1074, this method won't be feasible for much larger triangles
 
+#mathematic approach:
 
 #or try these
   arr.each { |x|
