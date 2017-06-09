@@ -86,9 +86,63 @@ end
 
 #answer = 1074, this method won't be feasible for much larger triangles
 
-#mathematic approach:
+#mathematic (efficient) approach:
 
-#or try these
+def largest_of(x, y)
+  return x if x > y
+  return y
+end
+
+
+
+def max_path(input, n)
+  arr = input.split(" ").map { |x| x.to_i }
+  i = 0
+  j = 0
+  k = 1
+  #this
+  rows = Array.new
+  rows << arr[0]
+   (n-1).times do
+     i += 1
+     j += i
+     k += j
+     rows << arr[j..k]
+   end
+  x = 1
+  rows[1][0] = rows[1][0] + rows[0]
+  rows[1][1] = rows[1][1] + rows[0]
+  (n - 2).times do
+    x += 1
+    y = 0
+    (x + 1).times do
+      if y == 0
+        rows[x][y] = rows[x][y] + rows[x-1][y]
+      elsif y == x
+        rows[x][y] = rows[x][y] + rows[x-1][y-1]
+      else
+        rows[x][y] = largest_of(rows[x][y] + rows[x-1][y], rows[x][y] + rows[x-1][y-1])
+      end
+      y +=1
+    end
+  end
+  rows.shift
+  return rows.max { |a, b| a.max <=> b.max }.max
+end
+
+#answer = 1074
+
+# or try these
+=begin
+
+3
+7 4
+2 4 6
+8 5 9 3
+
+
+row1[0] can only move to row2[0] or row2[1], row[1] can only move to row3[1] or row3[2]. genrally: row_n[x] can only move to row_n+1[x] or row_n+1[x+1]
+
   arr.each { |x|
 
   }
@@ -101,3 +155,5 @@ end
     j += i
     k += j + 1
   }
+
+=end
