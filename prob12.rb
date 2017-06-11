@@ -22,6 +22,52 @@ What is the value of the first triangle number to have over five hundred divisor
 
 
 
+#This one is the fastest and can find the answer in ~15 seconds
+def tri_div(n)
+  i = 0
+  divisors = []
+  until divisors.uniq.length > n
+    divisors = []
+    i += 1
+    tri_num = triangle_number(i)
+    (1..Math.sqrt(tri_num)).each { |x|
+      if tri_num % x == 0
+        divisors << x && divisors << (tri_num / x)
+      end
+    }
+  end
+  puts divisors.uniq.length
+  puts i
+  puts tri_num
+end
+
+def triangle_number(x)
+  return x if x == 0
+  i = 1
+  total = 0
+  while i <= x
+    total = total + i
+    i += 1
+  end
+  return total
+end
+
+#answer 500 = 76576500 (tri_num = 12375) (length = 576)
+#benchmark 100 =   0.020000   0.000000   0.020000 (  0.022470)
+#benchmark 500 =  13.150000   0.010000  13.160000 ( 13.165842)
+
+
+#using the below triangle_number method is actually slower despite being much more concise
+
+def triangle_number(x)
+  (1..x).inject(:+)
+end
+
+# benchmark 100:   0.030000   0.000000   0.030000 (  0.026611)
+#benchmark 500: 15.680000   0.060000  15.740000 ( 15.808320)
+
+
+
 def tri_divs(n)
 i = 1
 match = false
@@ -55,4 +101,65 @@ def triangle_number(x)
   return total
 end
 
+# for 200 2015, 2031120, 240
+#answer for 319 is 2079, 2162160
+# for 468 is 142913828922
 #answer = method takes too long for computer to solve for 500 divisors in a day
+# benchmark 100:   0.840000   0.000000   0.840000 (  0.846571)
+
+
+
+def tri_divs(n)
+i = 0
+match = false
+tri_num = 0
+factors = 0
+until factors > n do
+  i += 1
+  factors = 0
+  tri_num = triangle_number(i)
+  j = 1
+  while j <= tri_num
+      if tri_num % j == 0
+        factors += 1
+    end
+    j += 1
+  end
+end
+puts tri_num
+puts i
+return factors
+end
+
+def triangle_number(x)
+  (1..x).inject(:+)
+end
+
+#benchmark 100:   0.480000   0.000000   0.480000 (  0.474191)
+
+
+
+
+require 'prime'
+
+def tri_divs(n)
+  i = 0
+  divisors = 0
+  until divisors > n
+    i += 1
+    tri_num = triangle_number(i)
+    divisors = (1..tri_num).select { |x|
+      tri_num % x == 0
+    }.length
+  end
+  puts divisors
+  puts i
+  puts tri_num
+end
+
+
+def triangle_number(x)
+  (1..x).inject(:+)
+end
+
+# benchmark 100:  0.860000   0.000000   0.860000 (  0.853836)
