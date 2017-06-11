@@ -6,12 +6,15 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 =end
 
+
+
+
+
+
+
 def smallest_multiple(*args)
-  array = []
-  mult = false
   i = 1
-  args.each { |x| array << x }
-  until array.all? { |x| i % x == 0 }
+  until args.all? { |x| i % x == 0 }
     i += 1
   end
   return i
@@ -23,7 +26,6 @@ end
 
 def smallest_multiple(*args)
   array = []
-  mult = false
   i = 1
   args.each { |x| array << x }
   def divisible?(n, array)
