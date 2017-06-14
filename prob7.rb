@@ -6,6 +6,40 @@ What is the 10 001st prime number?
 
 =end
 
+#much faster method
+
+def is_prime?(n)
+  return nil if n == 0 || n == 1
+  return true if n == 2
+  return false if n % 2 == 0
+  return true if n == 5
+  return false if n % 5 == 0
+  (2..Math.sqrt(n)).each { |x|
+    return false if n % x == 0
+  }
+  return true
+end
+
+
+
+
+def find_prime(n)
+  primes = [2]
+  i = 1
+  until primes.length == n do
+    primes << i if is_prime?(i)
+    i += 2
+  end
+  primes[-1]
+end
+
+# answer = 104743
+
+
+
+=begin
+
+slow method
 
 def is_prime?(n)
   return nil if n == 0 || n == 1
@@ -23,15 +57,4 @@ def is_prime?(n)
   return true
 end
 
-
-def find_prime(n)
-  primes = [2]
-  i = 1
-  until primes.length == n do
-    primes << i if is_prime?(i)
-    i += 2
-  end
-  primes[-1]
-end
-
-# answer = 104743
+=end
