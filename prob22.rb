@@ -12,121 +12,87 @@ What is the total of all the name scores in the file?
 =end
 
 
-def grab_names
-  file = File.new("p022_names.txt", "r")
-  File.size(file)
-end
-
-
 def read
-  file = File.new('p022_names.txt').map { |word| word.split(',') }.flatten.each { |word| word.gsub!(/[^a-zA-Z]/, '') }.sort!
+  file = File.new('p022_names.txt').map { |word| word.split(',') }.flatten.each { |word| word.gsub!(/[^a-zA-Z]/, '') }.sort
   values = []
   file.each { |word|
     letters = []
-    word.split("").each { |x|
-      letters << (x.downcase.ord-96)
-    }
+    word.split("").each { |x| letters << (x.downcase.ord - 96) }
     values << letters.inject(:+)
   }
-  values.map!.with_index { |x, i|
-    x = x * (i + 1)
-  }.inject(:+)
+  values.map.with_index { |x, i| x * (i + 1) }.inject(:+)
 end
 
 #answer = 871198282
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def read
-  file = File.foreach('p022_names.txt').map { |word| word.split(',') }.flatten.each { |word| word.gsub!(/[^a-zA-Z]/, '') }.sort!
+  file = File.foreach('p022_names.txt').map { |word| word.split(',') }.flatten.each { |word| word.gsub!(/[^a-zA-Z]/, '') }.sort
   values = []
   file.each { |word|
-    count = 0
-    word.downcase!
-    if word.include? "a"
-      count += 1
-    end
-    if word.include? "b"
-      count += 2
-    end
-    if word.include? "c"
-      count += 3
-    end
-    if word.include? "d"
-      count += 4
-    end
-    if word.include? "e"
-      count += 5
-    end
-    if word.include? "f"
-      count += 6
-    end
-    if word.include? "g"
-      count += 7
-    end
-    if word.include? "h"
-      count += 8
-    end
-    if word.include? "i"
-      count += 9
-    end
-    if word.include? "j"
-      count += 10
-    end
-    if word.include? "k"
-      count += 11
-    end
-    if word.include? "l"
-      count += 12
-    end
-    if word.include? "m"
-      count += 13
-    end
-    if word.include? "n"
-      count += 14
-    end
-    if word.include? "o"
-      count += 15
-    end
-    if word.include? "p"
-      count += 16
-    end
-    if word.include? "q"
-      count += 17
-    end
-    if word.include? "r"
-      count += 18
-    end
-    if word.include? "s"
-      count += 19
-    end
-    if word.include? "t"
-      count += 20
-    end
-    if word.include? "u"
-      count += 21
-    end
-    if word.include? "v"
-      count += 22
-    end
-    if word.include? "w"
-      count += 23
-    end
-    if word.include? "x"
-      count += 24
-    end
-    if word.include? "y"
-      count += 25
-    end
-    if word.include? "z"
-      count += 26
-    end
-    values << count
+    letters = []
+    word.downcase.split("").each { |letter| letters << count(letter) }
+    values << letters.inject(:+)
   }
-  values.map!.with_index { |x, i|
-    x = x * (i + 1)
-  }.inject(:+)
+  values.map.with_index { |x, i| x * (i + 1) }.inject(:+)
 end
+
+def count(word)
+  count = 0
+  count += 1 if word.include? "a"
+  count += 2 if word.include? "b"
+  count += 3 if word.include? "c"
+  count += 4 if word.include? "d"
+  count += 5 if word.include? "e"
+  count += 6 if word.include? "f"
+  count += 7 if word.include? "g"
+  count += 8 if word.include? "h"
+  count += 9 if word.include? "i"
+  count += 10 if word.include? "j"
+  count += 11 if word.include? "k"
+  count += 12 if word.include? "l"
+  count += 13 if word.include? "m"
+  count += 14 if word.include? "n"
+  count += 15 if word.include? "o"
+  count += 16 if word.include? "p"
+  count += 17 if word.include? "q"
+  count += 18 if word.include? "r"
+  count += 19 if word.include? "s"
+  count += 20 if word.include? "t"
+  count += 21 if word.include? "u"
+  count += 22 if word.include? "v"
+  count += 23 if word.include? "w"
+  count += 24 if word.include? "x"
+  count += 25 if word.include? "y"
+  count += 26 if word.include? "z"
+  return count
+end
+
 
 
 
@@ -138,4 +104,10 @@ def remove_quotes(n)
     n = n.slice(0..-2)
   end
   n
+end
+
+
+def grab_names
+  file = File.new("p022_names.txt", "r")
+  File.size(file)
 end
