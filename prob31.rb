@@ -30,12 +30,24 @@ def coinsum(base_unit, target, it, *mults)
     path = []
     x = 0
     until x >= target
-      a = rand(0..(coins.length - 1))
+      rando = rand(0..(coins.length - 1))
+      if rando < 2
+        a = rand(0..1)
+      elsif rando < 4
+        a = rand(0..3)
+      elsif rando < 6
+        a = rand(0..5)
+      else
+        a = rand(0..(coins.length - 1))
+      end
       x += coins[a]
       path << coins[a]
     end
-    paths << path.sort if path.inject(:+) == target
+    path.sort!
+    paths << path if path.inject(:+) == target
   end
   print paths.uniq
   count = 1 + paths.uniq.length
 end
+
+until uniq == false
