@@ -16,7 +16,38 @@ It can be verified that the sum of the numbers on the diagonals is 101.
 What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?
 
 =end
-#this method only works if u have the grid already meade and ready to enter
+
+
+def spiral(side) #enter the number of columns/rows the square has
+  number = side**2
+  numbers = []
+  i = 1
+  number.times do
+    numbers << i
+    i += 1
+  end
+  diags = []
+  j = 0
+  k = 2
+  count = 0
+  until j > numbers.length
+    if count == 4
+      count = 0
+      k += 2
+    end
+    diags << numbers[j]
+    j += k
+    count += 1
+  end
+  return diags.inject(:+)
+end
+
+#answer = 669171001
+
+
+
+
+#this method only works if u have the grid already meade and ready to enter (it treats the top left corner of grid as first entry in array since it is the first character in the input)
 def spiral(input)
   grid = input.split(" ").map { |x| x.to_i }
   len = grid.length
@@ -60,13 +91,3 @@ def spiral(input)
   puts ""
   diags.inject(:+)
 end
-
-#need to make a general solution
-
-def spiral(side)
-  number = side**2
-  numbers = []
-  i = 1
-  number.times do
-    numbers
-  end
