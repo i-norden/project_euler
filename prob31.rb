@@ -39,8 +39,3 @@ def coinsum(base_unit, target, it, *mults)
   print paths.uniq
   count = 1 + paths.uniq.length
 end
-
-
-2716
-
-23801
