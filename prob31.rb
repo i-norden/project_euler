@@ -14,3 +14,33 @@ It is possible to make £2 in the following way:
 How many different ways can £2 be made using any number of coins?
 
 =end
+
+def coinsum(base_unit, target, *mults)
+  coins = [base_unit] + mults
+
+  count = 1 +
+end
+
+#brute force!!!!
+
+def coinsum(base_unit, target, it, *mults)
+  coins = [base_unit] + mults
+  paths = []
+  it.times do
+    path = []
+    x = 0
+    until x >= target
+      a = rand(0..(coins.length - 1))
+      x += coins[a]
+      path << coins[a]
+    end
+    paths << path.sort if path.inject(:+) == target
+  end
+  print paths.uniq
+  count = 1 + paths.uniq.length
+end
+
+
+2716
+
+23801
