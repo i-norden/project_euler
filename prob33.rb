@@ -14,25 +14,8 @@ If the product of these four fractions is given in its lowest common terms, find
 
 =end
 
-def foo(decimal)
-  num = []
-  dem = []
-  i = 9
-  ((10**decimal)-10).times do
-    i += 1
-    num << i
-    dem << i
-  end
-  fractions = []
-  num.map { |x| dem.each { |y| fractions << [x.to_s, y.to_s] if x < y } } 
-  split = []
-  fractions.each { |x, y| split << x.split("") + y.split("") }
-  print split
-  return split.length
-end
 
-
-def foo(decimal)
+def foo(decimal) #enter number of digits the num and denom can have
   num = []
   dem = []
   i = 9
@@ -68,14 +51,18 @@ def foo(decimal)
     divs1 << [xsplit[0], ysplit[0], i] if xsplit[1] == ysplit[1]
     i += 1
   }
-  print match
-  puts""
-  puts""
-  print divs1
-  puts""
   answ = []
   match.each { |x, y| divs2 << x.to_f / y.to_f }
-  divs1.map! { |x, y, i| [x.to_f / y.to_f, i] }.uniq
-  divs1.each { |d, i| answ << [d, i, match[i]] if d == divs2[i] }
-  answ
+  divs1.map! { |x, y, i| [x.to_f / y.to_f, i] }.uniq.each { |d, i| answ << match[i] if d == divs2[i] }
+  numer = 1
+  denom = 1
+  answ.each { |x, y|
+    numer *= x.to_i
+    denom *= y.to_i
+  }
+  puts numer.to_s + "/" + denom.to_s
+  puts (numer.to_r/denom.to_r).to_r
+  print answ
 end
+
+#answer = 100
