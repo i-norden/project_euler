@@ -17,8 +17,9 @@ def grab_names
   File.size(file)
 end
 
+
 def read
-  file = File.foreach('p022_names.txt').map { |word| word.split(',') }.flatten.each { |word| word.gsub!(/[^a-zA-Z]/, '') }.sort!
+  file = File.new('p022_names.txt').map { |word| word.split(',') }.flatten.each { |word| word.gsub!(/[^a-zA-Z]/, '') }.sort!
   values = []
   file.each { |word|
     letters = []
@@ -27,9 +28,12 @@ def read
     }
     values << letters.inject(:+)
   }
-  print file
-  return values
+  values.map!.with_index { |x, i|
+    x = x * (i + 1)
+  }.inject(:+)
 end
+
+#answer = 871198282
 
 
 
@@ -119,9 +123,10 @@ def read
     end
     values << count
   }
-  values
+  values.map!.with_index { |x, i|
+    x = x * (i + 1)
+  }.inject(:+)
 end
-
 
 
 
