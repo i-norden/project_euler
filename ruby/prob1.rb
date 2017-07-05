@@ -18,4 +18,6 @@ def arrayFunction(number, multiple1, multiple2)
 return total
 end
 
-arrayFunction(100, 3, 5)
+arrayFunction(1000, 3, 5)
+
+#answer = 234168
