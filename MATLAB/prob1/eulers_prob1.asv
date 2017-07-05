@@ -1,0 +1,31 @@
+%script to request input and perform calculation
+cont = 0;
+number = input('Please enter the maximum number: ');
+while cont ~= 1
+  if number == floor(number)
+    cont = 1;
+  else
+    number = input('Please enter the maximum number: ');
+  end
+end
+cont = 0;
+mult1 = input('Please enter the first multiple: ');
+while cont ~= 1
+  if number == floor(number)
+    cont = 1;
+  else
+    number = input('Please enter the first multiple: ');
+  end
+end
+cont = 0;
+mult2 = input('Please enter the second multiple: ');
+while cont ~= 1
+  if number == floor(number)
+    cont = 1;
+  else
+    number = input('Please enter the second multiple: ');
+  end
+end
+multarray = multiples(number, mult1, mult2);
+sumtotal = sumarray(multarray);
+disp ('The sum total of the all the multiples of % or % below % is %.2f.\n', mult1, mult2, number, sumtotal);
