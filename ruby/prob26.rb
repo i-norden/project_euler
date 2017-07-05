@@ -27,9 +27,16 @@ def deci_array(n)
   ds = Array.new(n, 0)
   n.times do
     i += 1
-    ds[i - 1] = (1 / i.to_f)
+    ds[i - 1] = (1 / i.to_f).to_s
   end
-  ds
+  numbers = Array.new
+  ds.each { |x|
+    digits = Array.new
+    digits = x.split("")
+    digits = digits[(digits.index(".") + 1)..-1]
+    numbers << digits
+  }
+  numbers
 end
 
 def repc(n)
@@ -39,3 +46,12 @@ def repc(n)
   end
 
 end
+
+numbers = Array.new
+ds.each { |x|
+  digits = Array.new
+  digits = x.split("")
+  numbers << digits
+}
+
+  find_index(".")
