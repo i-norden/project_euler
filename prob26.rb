@@ -24,18 +24,18 @@ Find the value of d < 1000 for which 1/d contains the longest recurring cycle in
 
 def deci_array(n)
   i = 0
-  ds = []
+  ds = Array.new(n, 0)
   n.times do
-    i += 1.0
-    ds << i
+    i += 1
+    ds[i - 1] = (1 / i.to_f)
   end
-  ds.map { |x| x = (1 / x) }
+  ds
 end
 
 def repc(n)
   arr = deci_array(n)
   arr.each do
-    
+
   end
 
 end
