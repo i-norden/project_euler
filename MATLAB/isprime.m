@@ -1,20 +1,16 @@
 function [ isit ] = isprime( number )
 %Checks if a number is prime and returns true or false
 %Function call: isprime(number)
-switch number 
-    case 0 || 1
+isit = true;
+if number == 0 || number == 1
+    isit = false;
+elseif number == 2 || number == 3 || number == 5
+    isit = true;
+end 
+for i = 2:ceil(sqrt(number))
+    if mod(number, i) == 0
         isit = false;
-    case 2 || 3 || 5
-        isit = true;
-    case mod(number, 2) == 0 || mod(number, 5) == 0
-        isit = false;
-    otherwise 
-        array = 2:sqrt(number);
-        if mod(number, array) == 0
-            isit = false;
-        else
-            isit = true;
-        end
+    end 
 end
 end
-
+    
