@@ -32,12 +32,12 @@ end
 
 #better method doesn't rely on guessing n needed
 
-def fin
+def fin(max)
   array = [0, 1]
   fib = [0, 1]
   i = 2
   array[i] = array[i-1] + array[i-2]
-  while array[i] <= 4_000_000
+  while array[i] <= max
     fib << array[i]
     i += 1
     array[i] = array[i-1] + array[i-2]
@@ -50,11 +50,11 @@ end
 
 #even better method (faster, less memory intensive and doesn't keep the entire fib sequence in memeory):
 
-def fin
+def fin(max)
 array = [0, 1]
 evens = Array.new
 array[2] = array[0] + array[1]
-while array[2] <= 4_000_000
+while array[2] <= max
   evens << array[2] if array[2] % 2 == 0
   array[0] = array [1]
   array [1] = array[2]
