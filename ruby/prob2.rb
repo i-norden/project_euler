@@ -22,10 +22,28 @@ def fib(n) #takes number of terms as argument (just make sure this is larger tha
       i += 1
     end
   end
-  puts i
   evens = []
   fib_sequence.each { |x| evens << x if x % 2 == 0 } #to sum evens only
+  print evens
   total = evens.inject(0, :+)
 end
 
 #answer = 4613732
+
+#better method doesn't rely on guessing n needed
+
+def fin
+  array = [0, 1]
+  fib = [0, 1]
+  i = 2
+  array[i] = array[i-1] + array[i-2]
+  while array[i] <= 4_000_000
+    fib << array[i]
+    i += 1
+    array[i] = array[i-1] + array[i-2]
+  end
+  evens = Array.new
+  fib.each { |x| evens << x if x % 2 == 0 }
+  print evens
+  total = evens.inject(0, :+)
+end
