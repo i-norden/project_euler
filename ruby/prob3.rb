@@ -30,11 +30,7 @@ def prime_factor(number)
     primes << i if is_prime?(i)
     i += 1
   end
-  primes.each { |x|
-    if number % x == 0
-      pfs << x
-    end
-  }
+  primes.each { |x| pfs << x if number % x == 0 }
   pfs[-1]
 end
 
