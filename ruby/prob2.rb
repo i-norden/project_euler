@@ -47,3 +47,18 @@ def fin
   print evens
   total = evens.inject(0, :+)
 end
+
+#even better method (faster, less memory intensive and doesn't keep the entire fib sequence in memeory):
+
+def fin
+array = [0, 1]
+evens = Array.new
+array[2] = array[0] + array[1]
+while array[2] <= 4_000_000
+  evens << array[2] if array[2] % 2 == 0
+  array[0] = array [1]
+  array [1] = array[2]
+  array[2] = array[0] + array[1]
+end
+total = evens.inject(0, :+)
+end
