@@ -20,13 +20,8 @@ What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed 
 
 def spiral(side) #enter the number of columns/rows the square has
   number = side**2
-  numbers = []
-  i = 1
-  number.times do
-    numbers << i
-    i += 1
-  end
-  diags = []
+  numbers = (1..number).to_a
+  diags = Array.new
   j = 0
   k = 2
   count = 0
