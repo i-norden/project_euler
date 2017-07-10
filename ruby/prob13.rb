@@ -114,3 +114,16 @@ def sum(input, n)
 end
 
 #answer = 5537376230
+
+
+#is this any faster?
+
+def sum(input, n)
+  array = Array.new(input.split("").length, 0)
+  input.split(" ").each_with_index{ |x, i| array[i] = x.to_i }
+  sum = array.inject(0, :+).to_s.split("")
+  print sum.join("").to_i
+  return sum[0..n].join("").to_i
+end
+
+#nope it's slower
