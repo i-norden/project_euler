@@ -64,7 +64,7 @@ end
 
 
 def is_prime?(n)
-  return nil if n == 0 || n == 1
+  return false if n <= 1
   return true if n == 2
   return false if n % 2 == 0
   return true if n == 5
@@ -75,7 +75,7 @@ def is_prime?(n)
   return true
 end
 
-#answer = -59231 (71, -61, 971) 
+#answer = -59231 (71, -61, 971)
 
 
 #
