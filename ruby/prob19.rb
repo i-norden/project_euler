@@ -19,10 +19,22 @@ How many Sundays fell on the first of the month during the twentieth century (1 
 =end
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 class Month
+  attr_accessor :name
+  attr_accessor :days
   def initialize(name, days)
-    attr_reader :name
-    attr_reader :days
     @name = name
     @days = days
   end
@@ -35,7 +47,6 @@ end
 
 
 def count(month, year1, year2, day) #( e.g. 1, 1901, 2000, "mon")
-  month = month
   year = year1
   range = year2 - year1
   count = 0
