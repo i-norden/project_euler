@@ -15,9 +15,10 @@ HINT: Some products can be obtained in more than one way so be sure to only incl
 
 =begin
 
-A x B = C where 1 through 9 are used once.
+What we know:
+A x B = C where digits 1 through 9 are used exactly once.
 
-_ x _ _ _ _ _ _ _ = _
+e.g. _ x _ _ _ _ _ _ _ = _
 
 total number of digits is 9
 
@@ -34,7 +35,7 @@ possible to test all possible permutations ? (9!/(9-5)!) = 15120 permutations, s
 
 
 
-#Find all  _ _ x _ _ _ = _ _ _ _ products and all _ x _ _ _ _ = _ _ _ _ products, throw out anything with more than 9 digits total, anything with 0s in it, and anything with duplicates
+#Find digits for all  _ _ x _ _ _ = _ _ _ _ permutations and all _ x _ _ _ _ = _ _ _ _ permutations, throw out anything with more than 9 digits total, anything with 0s in it, and anything with duplicates, then sum
 
   def find_sum()
     permutations = (1..9).to_a.permutation(5).map(&:join)
@@ -44,7 +45,7 @@ possible to test all possible permutations ? (9!/(9-5)!) = 15120 permutations, s
 
 #below technically one line solution :)
 
-(1..9).to_a.permutation(5).map(&:join).map{|x|"#{x}"+"#{x.slice(0..1).to_i*x.slice(2..4).to_i}"}.map{|x|x.split('')}.reject{|x|x.length>9}.reject{|x|x.include?('0')}.reject{|x|x.uniq.length!=x.length}.map{|x|x.join('').slice(-4..-1).to_i}.uniq.inject(:+)+(1..9).to_a.permutation(5).map(&:join).map{|x|"#{x}"+"#{x[0].to_i*x.slice(1..4).to_i}"}.map{|x|x.split('')}.reject{|x|x.length>9}.reject{|x|x.include?('0')}.reject{|x|x.uniq.length!=x.length}.map{|x|x.join('').slice(-4..-1).to_i}.uniq.inject(:+)
+(1..9).to_a.permutation(5).map(&:join).map{|x|"#{x}"+"#{x.slice(0..1).to_i*x.slice(2..4).to_i}"}.map{|x|x.split('')}.reject{|x|x.length>9}.reject{|x|x.include?('0')}.reject{|x|x.uniq.length=x.length}.map{|x|x.join('').slice(-4..-1).to_i}.uniq.inject(:+)+(1..9).to_a.permutation(5).map(&:join).map{|x|"#{x}"+"#{x[0].to_i*x.slice(1..4).to_i}"}.map{|x|x.split('')}.reject{|x|x.length>9}.reject{|x|x.include?('0')}.reject{|x|x.uniq.length!=x.length}.map{|x|x.join('').slice(-4..-1).to_i}.uniq.inject(:+)
 #answer = 45228
 
 
