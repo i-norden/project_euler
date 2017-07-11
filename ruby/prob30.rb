@@ -28,15 +28,17 @@ i.e. for x = 6, n = 5: y = 354294, q = 6; q >= x
 for x = 7, n = 5: y = 413343, q = 6; q < x therefore the numbers in question must be smaller than 7 digits (actually must be smaller than 413343, and could be refined further)
 so lets just check everything below 7 digits
 
+also 2*(2**5) = 64 so we can start range here (doesn't help much but at least this way we don't have to throw out 1 at the end)
+
 
 =end
 
 def find_em(power)
-  arr = (1..413343).to_a
-  sums_of_powers = arr.map(&:to_s).map { |x| x.split('') }.map {|x| x.map { |x| x.to_i**power }.inject(:+) }
+  numbers = (64..413_343).to_a
+  sums_of_powers = numbers.map(&:to_s).map { |x| x.split('') }.map {|x| x.map { |x| x.to_i**power }.inject(:+) }
   answ = []
-  arr.each_with_index { |x, i| answ << x if x == sums_of_powers[i] }
-  answ.reject { |x| x == 1 }.inject(:+)
+  numbers.each_with_index { |x, i| answ << x if x == sums_of_powers[i] }
+  answ.inject(:+)
 end
 
 #answer = 443839
