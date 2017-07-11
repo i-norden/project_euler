@@ -29,7 +29,7 @@ How many Sundays fell on the first of the month during the twentieth century (1 
 
 
 
-
+$year = 0
 
 class Month
   attr_accessor :name
@@ -39,8 +39,8 @@ class Month
     @days = days
   end
   def if_feb
-    if @name == 'Feb' && year % 4 == 0 # && century % 400 == 0
-      @days == 29
+    if @name == 'Feb' && $year % 4 == 0 # && century % 400 == 0
+      @days = 29
     end
   end
 end
@@ -67,24 +67,23 @@ def count(month, year1, year2, day) #( e.g. 1, 1901, 2000, "mon")
   days = ["mon", "tue", "wed", "thu", "fri", "say", "sun"]
 
 
+months = {
+  jan: Month.new('Jan', 31),
+  feb: Month.new('Feb', 28),
+  mar: Month.new('Mar', 31),
+  apr: Month.new('Apr', 30),
+  may: Month.new('May', 31),
+  jun: Month.new('Jun', 30),
+  jul: Month.new('Jul', 31),
+  aug: Month.new('Aug', 31),
+  sep: Month.new('Sep', 30),
+  oct: Month.new('Oct', 31),
+  nov: Month.new('Nov', 30),
+  dec: Month.new('Dec', 31)
+}
 
 
-
-
-  months = {
-  jan = Month.new('Jan', 31),
-  feb = Month.new('Feb', 28),
-  mar = Month.new('Mar', 31),
-  apr = Month.new('Apr', 30),
-  may = Month.new('May', 31),
-  jun = Month.new('Jun', 30),
-  jul = Month.new('Jul', 31),
-  aug = Month.new('Aug', 31),
-  sep = Month.new('Sep', 30),
-  oct = Month.new('Oct', 31),
-  nov = Month.new('Nov', 30),
-  dec = Month.new('Dec', 31)
-  }
+month
 
 
 
