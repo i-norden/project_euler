@@ -49,7 +49,6 @@ How many Sundays fell on the first of the month during the twentieth century (1 
 
   def count(month, year1, year2) #( e.g. 1 (for jan), 1901, 2000
     $year = year1
-    range = year2 - year1
     $months = {
       jan: Month.new('Jan', 31),
       feb: Month.new('Feb', 28),
@@ -65,71 +64,22 @@ How many Sundays fell on the first of the month during the twentieth century (1 
       dec: Month.new('Dec', 31)
     }
     count = 0
+    j = 0
     until $year == year2 + 1 do
+      $months[:feb].if_feb
       $months.each { |key, value|
         i = value.days % 7
-        puts value.days  #the problem is that this pretends every month starts on a monday... need to use remainder of previous month to set start day of next month
+        j += i
+        j = j % 7 if j > 6
+        puts value.days  
         puts i
-        count += 1 if i == 6
+        count += 1 if i + j == 6
         puts count
       }
       $year += 1
-      $months[:feb].if_feb
     end
     count
   end
 
 
-
-
-def count(month, year1, year2, day) #( e.g. 1, 1901, 2000, "mon")
-  year = year1
-  range = year2 - year1
-  count = 0
-  until year == year2 do
-    months.each { |name, days|
-      i = days % 7
-      first_day = weekdays[0] if i == 0
-      first_day = weekdays[1] if i == 1
-      first_day = weekdays[2] if i == 2
-      first_day = weekdays[3] if i == 3
-      first_day = weekdays[4] if i == 4
-      first_day = weekdays[5] if i == 5
-      first_day = weekdays[6] if i == 6
-      count += 1 if first_day == day[6]
-    }
-  end
-  weekdays = ["mon", "tue", "wed", "thu", "fri", "say", "sun"]
-end
-
-$months = {
-  jan: Month.new('Jan', 31),
-  feb: Month.new('Feb', 28),
-  mar: Month.new('Mar', 31),
-  apr: Month.new('Apr', 30),
-  may: Month.new('May', 31),
-  jun: Month.new('Jun', 30),
-  jul: Month.new('Jul', 31),
-  aug: Month.new('Aug', 31),
-  sep: Month.new('Sep', 30),
-  oct: Month.new('Oct', 31),
-  nov: Month.new('Nov', 30),
-  dec: Month.new('Dec', 31)
-}
-
-
-month
-
-
-
-def num_days(year1, year2)
-  range = year2 - year1
-
-
-
-
-def find_sunday
-  year = 1900
-  month = 1
-
-end
+#answer = 171
